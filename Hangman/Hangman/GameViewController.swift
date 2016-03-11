@@ -81,7 +81,7 @@ class GameViewController: UIViewController {
         letterGuess = letterGuessing.text
         if (numberOfWrongGuesses >= 7) {
             self.presentViewController(loseAlertController!, animated: true, completion: nil)
-        } else if (hangmanWord.text?.characters.count == 0) {
+        } else if (numberOfUniqueCharactersInPhrase == correctLettersGuessed.count) {
             self.presentViewController(winAlertController!, animated: true, completion: nil)
         } else if (letterGuess!.characters.count > 1) {
             self.presentViewController(letterAlertController!, animated: true, completion: nil)

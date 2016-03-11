@@ -9,11 +9,17 @@
 import UIKit
 
 class StartScreenViewController: UIViewController {
+    
+    @IBOutlet var startScreenLabel : UILabel!
+    @IBOutlet var newGameButton : UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        startScreenLabel.text = "HANGMAN"
+        newGameButton.layer.borderWidth = 1.0
+        newGameButton.layer.borderColor = UIColor(red: 0, green: 0, blue: 190/255, alpha: 1).CGColor
+        newGameButton.layer.cornerRadius = 4.0
     }
 
     override func didReceiveMemoryWarning() {

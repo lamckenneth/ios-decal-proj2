@@ -17,6 +17,8 @@ class StartScreenViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         startScreenLabel.text = "HANGMAN"
+        startScreenLabel.font = UIFont(name:"AmericanTypewriter-Bold", size: 24)
+        newGameButton.titleLabel!.font = UIFont(name:"AmericanTypewriter", size: 18)
         newGameButton.layer.borderWidth = 1.0
         newGameButton.layer.borderColor = UIColor(red: 0, green: 0, blue: 190/255, alpha: 1).CGColor
         newGameButton.layer.cornerRadius = 4.0

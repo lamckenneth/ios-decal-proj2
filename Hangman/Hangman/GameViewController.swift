@@ -18,7 +18,6 @@ class GameViewController: UIViewController {
     @IBOutlet var incorrectGuesses : UILabel!
     @IBOutlet var letterGuessing : UITextField!
     @IBOutlet var guessButton : UIButton!
-    @IBOutlet var newGameButton : UIButton!
     //@IBOutlet var correctButton : UIButton!
     //@IBOutlet var incorrectButton : UIButton!
     var phrase : String?
@@ -40,10 +39,11 @@ class GameViewController: UIViewController {
         // Do any additional setup after loading the view.
         let hangmanPhrases = HangmanPhrases()
         phrase = hangmanPhrases.getRandomPhrase()
-        numberOfWrongGuesses = 1
-        numberOfUniqueCharactersInPhrase = 0
-        letterGuessing.text = ""
         print(phrase)
+        hangmanWord.font = UIFont(name:"AmericanTypewriter", size: 20)
+        guessButton.titleLabel!.font = UIFont(name:"AmericanTypewriter", size: 20)
+        incorrectGuesses.font = UIFont(name:"AmericanTypewriter", size: 20)
+        letterGuessing.font = UIFont(name:"AmericanTypewriter", size: 20)
         loadInterface()
     }
 
@@ -125,12 +125,22 @@ class GameViewController: UIViewController {
     }
     */
     
-    func newGameButtonFunction() {
+    @IBOutlet weak var newGameButton: UIBarButtonItem!
+    @IBAction func newGameButtonFunction(sender: UIBarButtonItem) {
         self.viewDidLoad()
     }
     
+    @IBOutlet weak var startOverButton: UIBarButtonItem!
+    @IBAction func startOverButtonFunction(sender: AnyObject) {
+        loadInterface()
+    }
+    
     func loadInterface() {
+        numberOfUniqueCharactersInPhrase = 0
+        numberOfWrongGuesses = 1
+        letterGuessing.text = ""
         hangmanWord.text = ""
+        hangmanImage.image = UIImage(named: "hangman1.gif")
         incorrectGuesses.text = "Incorrect Guesses: "
         var uniqueLettersInPhrase = [String]()
         for letter in phrase!.characters {
@@ -150,7 +160,6 @@ class GameViewController: UIViewController {
         guessButton.layer.borderColor = UIColor(red: 0, green: 0, blue: 190/255, alpha: 1).CGColor
         guessButton.layer.cornerRadius = 4.0
         guessButton.addTarget(self, action: "correctButtonFunction", forControlEvents: .TouchUpInside)
-        newGameButton.addTarget(self, action: "newGameButtonFunction", forControlEvents: .TouchUpInside)
         //correctButton.layer.borderWidth = 1.0
         //correctButton.layer.borderColor = UIColor(red: 0, green: 0, blue: 190/255, alpha: 1).CGColor
         //correctButton.layer.cornerRadius = 4.0
@@ -167,7 +176,7 @@ class GameViewController: UIViewController {
             "You Win!", preferredStyle: UIAlertControllerStyle.Alert)
         winAlertController!.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
         loseAlertController = UIAlertController(title: "Hangman", message:
-            "You Lose! The answer was \"" + phrase! + "\"", preferredStyle: UIAlertControllerStyle.Alert)
+            "You Lose!", preferredStyle: UIAlertControllerStyle.Alert)
         loseAlertController!.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
         alreadyGuessedAlertController = UIAlertController(title: "Hangman", message:
             "You already guessed this letter!", preferredStyle: UIAlertControllerStyle.Alert)

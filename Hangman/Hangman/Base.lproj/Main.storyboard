@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Exf-51-EWU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AnC-bS-577">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -28,7 +28,7 @@
                                 <rect key="frame" x="277" y="402" width="46" height="30"/>
                                 <state key="normal" title="Start A New Game"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="gameSegue" id="TEI-2A-MSh"/>
+                                    <segue destination="sJ6-Yz-InY" kind="show" identifier="gameSegue" id="TEI-2A-MSh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -98,10 +98,6 @@
                                 </constraints>
                                 <state key="normal" title="Guess"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C6B-Se-cme">
-                                <rect key="frame" x="534" y="72" width="46" height="30"/>
-                                <state key="normal" title="New Game"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -110,8 +106,6 @@
                             <constraint firstItem="ic7-7C-1ty" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="55" id="8CY-wh-GuB"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ybD-20-Ohb" secondAttribute="bottom" constant="86" id="AGn-pa-Yfe"/>
                             <constraint firstItem="JyQ-b0-aTQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CI5-Ak-W7V"/>
-                            <constraint firstItem="C6B-Se-cme" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="NVf-iS-dOJ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="C6B-Se-cme" secondAttribute="trailing" id="OR7-EZ-jzZ"/>
                             <constraint firstItem="ybD-20-Ohb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Yxs-JV-QHf"/>
                             <constraint firstItem="ic7-7C-1ty" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="isJ-Ny-YWT"/>
                             <constraint firstItem="giI-On-miV" firstAttribute="top" secondItem="JyQ-b0-aTQ" secondAttribute="bottom" constant="68" id="vUx-6A-9IL"/>
@@ -120,6 +114,18 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="sGF-jP-dbT">
+                        <barButtonItem key="leftBarButtonItem" title="New Game" id="k7G-IS-ilA">
+                            <connections>
+                                <action selector="newGameButtonFunction:" destination="BYZ-38-t0r" id="ZjY-Xf-FAQ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Start Over" id="51H-Zl-nUV">
+                            <connections>
+                                <action selector="startOverButtonFunction:" destination="BYZ-38-t0r" id="nKU-m0-531"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="guessButton" destination="giI-On-miV" id="Jh4-Rb-rsS"/>
@@ -127,32 +133,33 @@
                         <outlet property="hangmanWord" destination="JyQ-b0-aTQ" id="7OL-0i-8zL"/>
                         <outlet property="incorrectGuesses" destination="ybD-20-Ohb" id="IW5-Hp-mjH"/>
                         <outlet property="letterGuessing" destination="KPc-Xk-RZh" id="LaM-ca-tGd"/>
-                        <outlet property="newGameButton" destination="C6B-Se-cme" id="5SG-rR-sZ6"/>
+                        <outlet property="newGameButton" destination="k7G-IS-ilA" id="UT1-P8-ag3"/>
+                        <outlet property="startOverButton" destination="51H-Zl-nUV" id="INz-Kf-VNk"/>
                         <segue destination="HTy-K9-oPc" kind="unwind" identifier="unwindToStart" unwindAction="prepareForUnwind:" id="G8w-72-UzE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <exit id="HTy-K9-oPc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1171" y="299"/>
+            <point key="canvasLocation" x="1983" y="299"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="LBI-Ql-qwK">
+        <scene sceneID="bfu-q4-k0p">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Exf-51-EWU" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sJ6-Yz-InY" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DoJ-eY-9LH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kGr-2Z-R68">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="AnC-bS-577" kind="relationship" relationship="rootViewController" id="7Xx-0g-DTA"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="9cD-X0-bLr"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HEQ-xa-jA0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cqx-sG-U1J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-465" y="299"/>
+            <point key="canvasLocation" x="1171" y="299"/>
         </scene>
     </scenes>
     <resources>
